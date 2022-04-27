@@ -22,6 +22,7 @@ const formValidation = yup.object({
     emailid: yup
         .string()
         .required("Email field should not be empty")
+        // eslint-disable-next-line
         .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "invalid email"),
     contactno: yup
         .string()
@@ -31,12 +32,13 @@ const formValidation = yup.object({
         .required("Password field should not be empty")
         .min(8, "Password should not be less than 8 characters")
         .max(12, "Password should not be more than 12 characters")
+        // eslint-disable-next-line
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Password should have at least one uppercase letter, one lowercase letter, one number and one special character"),
     confirmpassword: yup
         .string()
         .required("Confirm password field should not be empty ")
         .oneOf([yup.ref("password"), null], "Password is not matching"),
-        plan:yup
+    plan: yup
         .string()
         .required()
 })
@@ -46,7 +48,7 @@ export function Signup() {
     const history = useHistory();
     // formik functionality
     const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
-        initialValues: { name: "", emailid: "", contactno: "", password: "", confirmpassword: "",plan:"Silver" },
+        initialValues: { name: "", emailid: "", contactno: "", password: "", confirmpassword: "", plan: "Silver" },
         validationSchema: formValidation,
         onSubmit: (data) => signup(data)
     })

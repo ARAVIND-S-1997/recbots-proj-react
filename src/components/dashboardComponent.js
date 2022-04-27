@@ -40,6 +40,7 @@ export function Dashboard() {
     const [plan] = useState(updateplans);
     console.log("plans are", plan);
     const [value, setvalue] = useState();
+    console.log(value)
 
     // api request
     const updatePlan = (value) => {
@@ -53,6 +54,7 @@ export function Dashboard() {
         console.log(datas)
         axios({ url: `${apiurl}/plan`, method: "POST", headers: auth, data: datas })
             .then((response) => setvalue(response.data))
+            .then(()=>history.push("/dashboard"))
     }
 
     return (
