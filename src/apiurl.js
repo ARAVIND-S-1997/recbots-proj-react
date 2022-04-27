@@ -1,2 +1,2 @@
 // apiurl
-export const apiurl="https://recbot-project.herokuapp.com";
+export const apiurl="http://localhost:7000";
